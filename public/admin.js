@@ -13,27 +13,28 @@ function renderBook(book) {
     let root = document.getElementById("root")
     let listItem = document.createElement("li")
     let qtyInput = document.createElement("input")
-    listItem.textContent(`${book.title}`)
-    qtyInput.setAttribute('value' = `${book.quantity}`)
+    let saveBtn = document.createElement("button")
+    
+
+    listItem.innerHTML = `${book.title}`
+    qtyInput.setAttribute('value', `${book.quantity}`)
     saveBtn.textContent = "Save"
     
     saveBtn.addEventListener('click', () => {
-        fetch('http://localhost:3001/updateBook'),{
-        method: "PATCH"
-        headers: {
+        fetch('http://localhost:3001/updateBook',{
+            method: "PATCH",
+            headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             id: book.id,
             quantity: qtyInput.value
+            })
         })
+
     })
-
-})
-    listItem.append(qtyInput, saveBtn)
-    
-    root.append(listItem)
-
+listItem.append(qtyInput, saveBtn)
+root.append(listItem)
 
 }
 
