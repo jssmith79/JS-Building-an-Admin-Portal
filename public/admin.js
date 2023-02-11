@@ -33,8 +33,8 @@ function renderBook(book) {
         })
 
     })
-listItem.append(qtyInput, saveBtn)
-root.append(listItem)
+    listItem.append(qtyInput, saveBtn)
+    root.append(listItem)
 
 }
 
